@@ -35,13 +35,13 @@ namespace LibExpressions
         // TODO: public readonly string OperatorSymbol
         public  string OperatorSymbol
         {
-            set;get;
+            private set; // eller udelad for Read-only
+            get;
             }
         public sealed override string ToString()
         {
             return left.ToString() +" " + right.ToString() ;
         }
-
     }
 
 
