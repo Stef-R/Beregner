@@ -43,6 +43,13 @@ namespace LibExpressions
             return left.ToString() +" " + right.ToString() ;
         }
     }
+    public class PlusExpression : BinaryExperssion
+    {
+        public override double Evaluate()
+        {
+            return this.left.Evaluate() + this.right.Evaluate() ;
+        }
+    }
 
 
 }
