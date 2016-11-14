@@ -31,21 +31,34 @@ namespace LibExpressions
 
     public abstract class BinaryExpression : Expression
     {
-        protected Expression left;
-        protected Expression right;
+        protected readonly Expression left;
+        protected readonly Expression right;
         // TODO: public readonly string OperatorSymbol
-        public  string OperatorSymbol
+        protected BinaryExpression(Expression left, Expression right)
         {
-            private set; // eller udelad for Read-only
+            this.left  = 
+                left;
+            this.right = right;
+        }
+
+        public abstract string OperatorSymbol
+        {
             get;
-            }
+            //private set; // eller udelad for Read-only
+        }
         public sealed override string ToString()
         {
-            return left.ToString() +" " + right.ToString() ;
+            return left.ToString() +" " + OperatorSymbol + " "+ right.ToString() ;
         }
     }
     public class PlusExpression : BinaryExpression
     {
+        public PlusExpression(Expression left, Expression right) : base(left, right)
+        {
+        }
+
+        public override string OperatorSymbol        {            get  {return "+";}        }
+
         public override double Evaluate()
         {
             return this.left.Evaluate() + this.right.Evaluate() ;
@@ -56,6 +69,18 @@ namespace LibExpressions
         //    this.right = right;
         //    OperatorSymbol = "+";
         //}
+    }
+
+    public class MinusExpression : BinaryExpression
+    {
+        public MinusExpression(Expression left, Expression right) : base(left, right)    { }
+
+        public override string OperatorSymbol  { get  {  return "-";   }        }
+
+        public override double Evaluate()
+        {
+            return left.Evaluate() - right.Evaluate();
+        }
     }
 
 
