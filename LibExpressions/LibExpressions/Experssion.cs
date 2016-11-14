@@ -48,7 +48,7 @@ namespace LibExpressions
         }
         public sealed override string ToString()
         {
-            return left.ToString() +" " + OperatorSymbol + " "+ right.ToString() ;
+            return "(" + left.ToString() +" " + OperatorSymbol + " "+ right.ToString() + ")";
         }
     }
     public class PlusExpression : BinaryExpression
