@@ -49,6 +49,12 @@ namespace LibExpressions
         {
             return this.left.Evaluate() + this.right.Evaluate() ;
         }
+        public PlusExpression PlusExpresion(Exception left,Exception right)
+        {
+            this.left  = left;
+            this.right = right;
+            OperatorSymbol = "+";
+        }
     }
 
 
